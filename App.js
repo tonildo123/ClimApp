@@ -8,14 +8,11 @@ import Navigate from './src/Navigators/Navigate';
 import 'react-native-gesture-handler';
 
 
-
-
 const App = () => {
 
-  return (    
-    <Navigate />
+  return (   
+        <Navigate />
   );
 };
-
 
 export default App;

@@ -13,7 +13,6 @@ enableLatestRenderer();
 const MapScreen = () => {
 
 
-  const api_google_maps = 'AIzaSyCP79j9y-SD3Nu9BYqeq0uUtH-_HBxjfEs';
   return (
     <View style={styles.container}>
 
@@ -21,14 +20,14 @@ const MapScreen = () => {
           <MapView
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           style={styles.map}
-          showsUserLocation={true}  
+          showsUserLocation={false}  
           zoomEnabled={true}  
           zoomControlEnabled={true}  
           region={{
-            latitude: 28.579660,
-            longitude: 77.321110,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitude: 28.579660,   
+            longitude: 77.321110,  
+            latitudeDelta: 0.0922,  
+            longitudeDelta: 0.0421,  
           }}
         >
         </MapView>
@@ -65,8 +64,6 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
     backgroundColor:'#2C3E50',
-    // borderColor:'#6388AC',
-    // borderWidth:5,
     borderRadius:30,
 
   },
