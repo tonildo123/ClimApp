@@ -28,6 +28,7 @@ const Navigate = () => {
           },
         }}
       >
+        <Stack.Screen name="Splash" component={ LoadingScreen } />
         <Stack.Screen name="Home" component={ Home } />
         <Stack.Screen name="Permiso" component={ Permissionscreen } />
         <Stack.Screen name="Map" component={MapScreen} />

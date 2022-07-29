@@ -27,35 +27,12 @@ const Home = ({navigation}) => {
     let hora = date.getHours() + ':' + date.getMinutes();
 
     const handleVistaMaps = () =>{
-        handleConsultaClima();
-        
+        navigation.navigate('Map');  
 
     };
 
 
-    const handleConsultaClima = async() =>{  
-  
-        try {
-          const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Tucuman,AR&APPID=17db3db599cc6c8c1d3804459938744b`);
-          console.log(response);
-          if(response){
-            console.log('respuesta', JSON.stringify(response,null,3));
-            navigation.navigate('Map');
-          }
-        } catch (error) {
-          console.error('error de la api');
-          console.error(JSON.stringify(error, null,3));
-        }
-      
-        /*
     
-        api que necesita latitud y longitud
-    
-        https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-        
-        */
-      
-      };
 
     return (
     <View style={styles.container}>
