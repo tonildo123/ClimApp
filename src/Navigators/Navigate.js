@@ -10,7 +10,7 @@ import ResultScreen from '../screens/ResultScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import Permissionscreen from '../screens/Permissionscreen';
 import { PermissionContext } from '../context/PermissionContext';
-import LoadingScreen from '../screens/LoadingScreen';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -28,7 +28,6 @@ const Navigate = () => {
           },
         }}
       >
-        <Stack.Screen name="Splash" component={ LoadingScreen } />
         <Stack.Screen name="Home" component={ Home } />
         <Stack.Screen name="Permiso" component={ Permissionscreen } />
         <Stack.Screen name="Map" component={MapScreen} />
