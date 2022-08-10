@@ -249,16 +249,6 @@ const MapScreen = ({navigation}) => {
           
         </MapView>
       </View>
-
-      <View style={styles.containerButton}>
-            <TouchableOpacity
-
-              onPress={handleAlert}
-            >
-              <Text style={styles.containerText}>VER CLIMA</Text>
-            </TouchableOpacity>
-      </View>
-
    </View>
   );
 };
@@ -270,26 +260,12 @@ const styles = StyleSheet.create({
 
   },
   containerMap:{
-    height:'90%',
+    height:'100%',
     width:'100%',
 
   },
   map: {
     ...StyleSheet.absoluteFillObject,
-  },
-
-  containerButton:{
-    height:'10%',
-    width:'100%',
-    justifyContent:'center',
-    alignItems:'center',
-    backgroundColor:'#2C3E50',
-    borderRadius:30,
-
-  },
-  containerText:{
-    color:'white',
-    fontSize:25,
   },
 
 
