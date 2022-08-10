@@ -132,11 +132,19 @@ const ResultScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-        <ImageBackground source={require('../Assets/space.png')} style={{width: '100%', height: '100%'}}>
+
+      
+        <ImageBackground source={
+          (isLoading)
+          ? require('../Assets/space.png')
+          : (respuesta.icon.charAt(respuesta.icon.length - 1) == 'd')
+            ? require('../Assets/pantalladia.png')
+            : require('../Assets/pantallanoche.png')
+          } style={{width: '100%', height: '100%'}}>
 
         <View style={styles.primerView}>
 
-            <Text style={{color:'white'}}>Fecha {fecha} - HORA {hora}</Text> 
+            <Text style={{color:'white', fontSize:20}}>Fecha {fecha} - HORA {hora}</Text> 
             
             <Text style={{color:'white'}}>{
                 (isLoading)
@@ -170,7 +178,7 @@ const ResultScreen = ({navigation}) => {
                 onPress={handleVistaHome}
                 >
                 <View style={styles.viewButton}>
-                    <Text style={{color:'white', padding:8}}>INICIO</Text>
+                    <Text style={{color:'white', padding:8, fontSize:35}}>INICIO</Text>
                 </View>
 
             </TouchableOpacity>         
@@ -210,8 +218,8 @@ const styles = StyleSheet.create({
       borderRadius:20,
   },
   tinyLogo:{
-    height:30,
-    width:50,
+    height:80,
+    width:100,
   },
   });
 

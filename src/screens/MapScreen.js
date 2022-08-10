@@ -125,7 +125,15 @@ const MapScreen = ({navigation}) => {
 
     (ciudad.coordenadas.latitud)
     ? navigation.navigate('Success', {ciudad})
-    : Alert.alert('Seleccione una ubicación');
+    : Alert.alert(
+      'Lo sentimos!',
+      'Seleccione una vez más la ciudad MARCADA.',
+      [
+        {text: 'Cancelar', onPress: () => console.log('Cancel Pressed!')},
+        {text: 'Aceptar', onPress: () => console.log('OK Pressed!')},
+      ],
+      { cancelable: false }
+    )
     
   }
 

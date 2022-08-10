@@ -168,15 +168,15 @@ const Home = ({navigation}) => {
 
         <View style={styles.primerView}>
 
-            <Text style={{color:'white'}}>Fecha {fecha} - HORA {hora}</Text> 
+            <Text style={{color:'white', fontSize:15}}>Fecha {fecha} - HORA {hora}</Text> 
             
-            <Text style={{color:'white'}}>{
+            <Text style={{color:'white', fontSize:15}}>{
                 (isLoading)
                 ? `Cargando...`
                 : `${respuesta.name} - ${respuesta.pais}`
 
             }</Text> 
-            <Text style={{color:'white'}}>{
+            <Text style={{color:'white', fontSize:15}}>{
                 (isLoading)
                 ? `...`
                 : `${(respuesta.temp - 273).toFixed(2)}°C - ${soydescripcion}`
@@ -184,7 +184,7 @@ const Home = ({navigation}) => {
             </Text> 
             {
               (isLoading)
-              ? <Text style={{color:'white'}}>...</Text> 
+              ? <Text style={{color:'white', fontSize:15}}>...</Text> 
               : <Image
                 style={styles.tinyLogo}
                 source={{
@@ -240,11 +240,11 @@ const styles = StyleSheet.create({
     viewButton:{
         borderColor:'#85929E',
         borderWidth:2,
-        borderRadius:20,
+        borderRadius:18,
     },
     tinyLogo:{
-      height:30,
-      width:50,
+      height:80,
+      width:100,
     },
     });
 
