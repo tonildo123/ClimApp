@@ -13,7 +13,23 @@ import com.climapp.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+// import com.reactnativecommunity.geolocation.GeolocationPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+
+
 public class MainApplication extends Application implements ReactApplication {
+
+  // @Override
+  // protected List<ReactPackage> getPackages() {
+  //     return Arrays.asList(
+  //             new MainReactPackage(),
+  //             new GeolocationPackage()
+  //     );
+  // }
+
+ 
+
+
 
   private final ReactNativeHost mReactNativeHost =
       new ReactNativeHost(this) {
@@ -88,4 +104,16 @@ public class MainApplication extends Application implements ReactApplication {
       }
     }
   }
+
+
+
+
+  ////////////agregados por mi
+  //  @Override
+  //   protected List<ReactPackage> getPackages() {
+  //     return Arrays.<ReactPackage>asList(
+  //       new MainReactPackage()
+  //     , new VectorIconsPackage()
+  //     );
+  // }
 }

@@ -7,6 +7,7 @@
 /* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import translate from 'translate-google-api';
 
 import {  
     Text,
@@ -15,7 +16,12 @@ import {
     PermissionsAndroid,
     ImageBackground,
     StyleSheet,
+    Alert,
+    Image,
   } from 'react-native';
+  // import Geolocation from '@react-native-community/geolocation';
+  // Geolocation.setRNConfiguration(config);
+  import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
  
 const Home = ({navigation}) => {
@@ -44,13 +50,17 @@ const Home = ({navigation}) => {
     let date = new Date();
     let fecha = date.toLocaleDateString();
     let hora = date.getHours() + ':' + date.getMinutes();
+    //const translate = require('google-translate-api');
+    const [soydescripcion, setSoydescripcion] = useState();
 
   
 
   useEffect(() => {    
 
     handleConsultaClima();   
+    // Geolocation.getCurrentPosition(info => console.log('INFO', JSON.stringify(info, null, 3)));
     console.log('se ejecuto effect, segundo');
+
 
   },[]);
 
@@ -70,7 +80,10 @@ const Home = ({navigation}) => {
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         console.log("You can use the Location");
+
+        //getLocation();
         handleVistaMaps();
+        
       } else {
         console.log("Camera permission denied");
       }
@@ -80,13 +93,15 @@ const Home = ({navigation}) => {
   };
   
 
+
   const handleConsultaClima = async() =>{  
   
     try {
       const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Tucuman,AR&APPID=17db3db599cc6c8c1d3804459938744b`);
       console.log(response);
-      if (response){
-        
+      if (response){       
+      
+        soyTextoEnCastellano(response.data.weather[0].description);
         setState(!isLoading);
         setRespuesta({
 
@@ -112,6 +127,8 @@ const Home = ({navigation}) => {
         console.log('respuesta', JSON.stringify(response,null,3));
         // navigation.navigate('Home', response);
 
+        // http://openweathermap.org/img/wn/10d@2x.png OBTIENE EL ICONO del clima
+
       }
     } catch (error) {
       
@@ -130,6 +147,21 @@ const Home = ({navigation}) => {
 
     };
 
+    const soyTextoEnCastellano = (texto) =>{
+
+      translate(texto, {to: 'es'}).then(res => {
+        console.log(res[0]);
+
+        setSoydescripcion(res[0].toUpperCase());
+        
+    }).catch(err => {
+        console.error(err);
+        return err
+    });
+
+    }
+
+
     return (
     <View style={styles.container}>
         <ImageBackground source={require('../Assets/space.png')} style={{width: '100%', height: '100%'}}>
@@ -137,24 +169,31 @@ const Home = ({navigation}) => {
         <View style={styles.primerView}>
 
             <Text style={{color:'white'}}>Fecha {fecha} - HORA {hora}</Text> 
+            
             <Text style={{color:'white'}}>{
                 (isLoading)
-                ? `...`
+                ? `Cargando...`
                 : `${respuesta.name} - ${respuesta.pais}`
 
             }</Text> 
             <Text style={{color:'white'}}>{
                 (isLoading)
                 ? `...`
-                : `${(respuesta.temp - 273).toFixed(2)}°C - ${respuesta.descripcion}`
+                : `${(respuesta.temp - 273).toFixed(2)}°C - ${soydescripcion}`
                 }
             </Text> 
-            <Text style={{color:'white'}}>{
-                (isLoading)
-                ? `Cargando...`
-                : `${respuesta.icon}`
+            {
+              (isLoading)
+              ? <Text style={{color:'white'}}>...</Text> 
+              : <Image
+                style={styles.tinyLogo}
+                source={{
+                  uri: `http://openweathermap.org/img/wn/${respuesta.icon}@2x.png`,
+                }}
+              />
 
-            }</Text> 
+            }
+            
 
         </View>
 
@@ -203,6 +242,12 @@ const styles = StyleSheet.create({
         borderWidth:2,
         borderRadius:20,
     },
+    tinyLogo:{
+      height:30,
+      width:50,
+    },
     });
 
 export default Home;
+
+{/* <Icon name="cloud" size={30} color="#FFF" /> */}
