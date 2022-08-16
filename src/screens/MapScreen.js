@@ -103,7 +103,13 @@ const MapScreen = ({navigation}) => {
   };
 
 
-  const handleAlert = () => {
+  const handleAlert = (arg1, arg2) => {
+
+    console.log(arg1, arg2);
+
+    setCiudad({coordenadas:{
+      latitud:arg1,
+      longitud:arg2}})
 
     console.log('clicked');
 
@@ -147,7 +153,8 @@ const MapScreen = ({navigation}) => {
             showsUserLocation={true}  
             zoomEnabled={true}  
             zoomControlEnabled={true}  
-            region={tony}
+            // region={tony}
+            initialRegion={tony}
             // onRegionChangeComplete={(region) => console.log('REGION : ', JSON.stringify(region, null, 3))}
             showsTraffic={true}
             onPress={(e) => setMarkerd({ markers: [...markerd.markers, { latlng: e.nativeEvent.coordinate }] })}
@@ -160,8 +167,8 @@ const MapScreen = ({navigation}) => {
                     onPress={() => {setCiudad({coordenadas:{
                       latitud:marker.latlng.latitude,
                       longitud:marker.latlng.longitude}})
-                      console.log(ciudad);
-                      handleAlert();}}/>
+                      // console.log(ciudad);
+                      handleAlert(marker.latlng.latitude,marker.latlng.longitude);}}/>
                 ))
             }
           <Marker coordinate={tony} 
@@ -176,66 +183,6 @@ const MapScreen = ({navigation}) => {
                     }
                   }
                   />
-          <Marker coordinate={argentinaRegion}
-                  title="Buenos Aires"
-                  onPress={() => {
-                    setCiudad({coordenadas:{
-                      latitud:argentinaRegion.latitude,
-                      longitud:argentinaRegion.longitude}})
-                      console.log(ciudad);
-                      handleAlert();
-                    }}
-                  pinColor={pinColors.PURPLE} />
-          <Marker coordinate={mardelPlataRegion}
-                  title="Mar del Plata"
-                  onPress={() => {
-                    setCiudad({coordenadas:{
-                      latitud:mardelPlataRegion.latitude,
-                      longitud:mardelPlataRegion.longitude}})
-                      console.log(ciudad);
-                      handleAlert();
-                    }}
-                  pinColor={pinColors.PURPLE} />
-          <Marker coordinate={usuashiaRegion}
-                  title="Ushuaia"
-                  onPress={() => {
-                    setCiudad({coordenadas:{
-                      latitud:usuashiaRegion.latitude,
-                      longitud:usuashiaRegion.longitude}})
-                      console.log(ciudad);
-                      handleAlert();
-                    }}
-                  pinColor={pinColors.PURPLE} />
-          <Marker coordinate={misionesRegion}
-                  title="Misiones"
-                  onPress={() => {
-                    setCiudad({coordenadas:{
-                      latitud:tony.latitude,
-                      longitud:tony.longitude}})
-                      console.log(ciudad);
-                      handleAlert();
-                    }}
-                  pinColor={pinColors.PURPLE} />
-          <Marker coordinate={jujuyRegion}
-                  title="Jujuy"
-                  onPress={() => {
-                    setCiudad({coordenadas:{
-                      latitud:misionesRegion.latitude,
-                      longitud:misionesRegion.longitude}})
-                      console.log(ciudad);
-                      handleAlert();
-                    }}
-                  pinColor={pinColors.PURPLE} />
-          <Marker coordinate={cordobaRegion}
-                  title="Cordoba"
-                  onPress={() => {
-                    setCiudad({coordenadas:{
-                      latitud:cordobaRegion.latitude,
-                      longitud:cordobaRegion.longitude}})
-                      console.log(ciudad);
-                      handleAlert();
-                    }}
-                  pinColor={pinColors.PURPLE} /> 
           <Marker coordinate={barilocheRegion}
                   title="Bariloche"
                   onPress={() => {

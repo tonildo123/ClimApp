@@ -109,7 +109,7 @@ const Home = ({navigation}) => {
           latitud: response.data.coord.lat,
           longitud:response.data.coord.lon,
           clima: response.data.weather[0].main,
-          descripcion:response.data.weather[0].description,
+          descripcion:soydescripcion,//response.data.weather[0].description,
           icon:response.data.weather[0].icon,
           temp:response.data.main.temp,
           tempmin:response.data.main.temp_min,
@@ -124,7 +124,7 @@ const Home = ({navigation}) => {
           nubosidad:response.data.clouds.all,
 
         });
-        console.log('respuesta', JSON.stringify(response,null,3));
+        // console.log('respuesta', JSON.stringify(response,null,3));
         // navigation.navigate('Home', response);
 
         // http://openweathermap.org/img/wn/10d@2x.png OBTIENE EL ICONO del clima

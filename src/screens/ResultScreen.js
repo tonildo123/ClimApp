@@ -23,7 +23,7 @@ const ResultScreen = ({navigation}) => {
 
   const route = useRoute();
 
-  console.log('route', JSON.stringify(route, null, 3));
+  console.log('Cordenadas recibidas : ', JSON.stringify(route, null, 3));
 
   const latRecibida = route.params.ciudad.coordenadas.latitud;
   const lonRecibida = route.params.ciudad.coordenadas.longitud;
@@ -95,7 +95,7 @@ const ResultScreen = ({navigation}) => {
           nubosidad:response.data.clouds.all,
 
         });
-        console.log('respuesta', JSON.stringify(response,null,3));
+        // console.log('respuesta', JSON.stringify(response,null,3));
 
       }
     } catch (error) {
